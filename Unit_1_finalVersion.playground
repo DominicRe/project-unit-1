@@ -1,0 +1,116 @@
+
+// Dictionary with all player informations
+
+let player1: [String: String] = ["Name": "Joe Smith", "Height": "42", "Experience": "true", "Guardian": "Jim and Jan Smith"]
+let player2: [String: String] = ["Name": "Jill Tanner", "Height": "36", "Experience": "true", "Guardian": "Clara Tanner"]
+let player3: [String: String] = ["Name": "Bill Bon", "Height": "43", "Experience": "true", "Guardian": "Sara and Jenny Bon"]
+let player4: [String: String] = ["Name": "Eva Gordon", "Height": "45", "Experience": "false", "Guardian": "Wendy and Mike Gordon"]
+let player5: [String: String] = ["Name": "Matt Gill", "Height": "40", "Experience": "false", "Guardian": "Charles and Sylvia Gill"]
+let player6: [String: String] = ["Name": "Kimmy Stein", "Height": "41", "Experience": "false", "Guardian": "Bill and Hillary Stein"]
+let player7: [String: String] = ["Name": "Sammy Adams", "Height": "45", "Experience": "false", "Guardian": "Jeff Adams"]
+let player8: [String: String] = ["Name": "Karl Saygan", "Height": "42", "Experience": "true", "Guardian": "Heather Bledsoe"]
+let player9: [String: String] = ["Name": "Suzane Greenberg", "Height": "44", "Experience": "true", "Guardian": "Henrietta Dumas"]
+let player10: [String: String] = ["Name": "Sal Dali", "Height": "41", "Experience": "false", "Guardian": "Gala Dali"]
+let player11: [String: String] = ["Name": "Joe Kavalier", "Height": "39", "Experience": "false", "Guardian": "Sam and Elaine Kavalier"]
+let player12: [String: String] = ["Name": "Ben Finkelstein", "Height": "44", "Experience": "false", "Guardian": "Aaron and Jill Finkelstein"]
+let player13: [String: String] = ["Name": "Diego Soto", "Height": "41", "Experience": "true", "Guardian": "Robin and Sarika Soto"]
+let player14: [String: String] = ["Name": "Chloe Alaska", "Height": "47", "Experience": "false", "Guardian": "David and Jamie Alaska"]
+let player15: [String: String] = ["Name": "Arnold Willis", "Height": "43", "Experience": "false", "Guardian": "Claire Willis"]
+let player16: [String: String] = ["Name": "Phillip Helm", "Height": "44", "Experience": "true", "Guardian": "Thomas Helm and Eva Jones"]
+let player17: [String: String] = ["Name": "Les Clay", "Height": "42", "Experience": "true", "Guardian": "Wynonna Brown"]
+let player18: [String: String] = ["Name": "Herschel Krustofski", "Height": "45", "Experience": "true", "Guardian": "Hyman and Rachel Krustofski"]
+
+// Array with all Players inside it
+
+let players: [[String: String]] = [player1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11, player12, player13, player14, player15, player16, player17, player18]
+
+
+// Sorting experience and inexperience players in two Dictionarys
+
+var isExperienced: [[String: String]] = []
+var isNotExperienced: [[String: String]] = []
+
+for player in players {
+    if player["Experience"] == "true" {
+        isExperienced.append(player)
+    } else {
+        isNotExperienced.append(player)
+    }
+}
+
+// my Check if the division is correct
+
+isExperienced.count
+isNotExperienced.count
+
+// Divide the players evenly into three teams
+
+var teamDragons: [[String: String]] = []
+var teamSharks: [[String: String]] = []
+var teamRaptors: [[String: String]] = []
+
+
+func sortingIntoTeams() {
+    
+    for exp in 0..<isExperienced.count {
+        
+        if exp % 3 == 0 {
+            teamDragons.append(players[exp])
+        } else if exp % 3 == 1 {
+            teamSharks.append(players[exp])
+        } else if exp % 3 == 2 {
+            teamRaptors.append(players[exp])
+        }
+    }
+    
+    // my check if the devision is correct
+    
+    teamSharks.count
+    teamDragons.count
+    teamRaptors.count
+    
+    for inExp in 0..<isNotExperienced.count {
+        
+        if inExp % 3 == 0 {
+            teamDragons.append(players[inExp])
+        } else if inExp % 3 == 1 {
+            teamSharks.append(players[inExp])
+        } else if inExp % 3 == 2 {
+            teamRaptors.append(players[inExp])
+        }
+    }
+    
+}
+
+// my check if the final result is correct
+
+sortingIntoTeams()
+teamSharks.count
+teamDragons.count
+teamRaptors.count
+
+// Sending letters to the Guardians - Team Dragons
+
+var letters: [[String: String]] = []
+
+let dragonsPractice = "March 17 at 1pm"
+let sharksPractice = "March 17 at 3pm"
+let raptorsPractice = "March 18 at 1pm"
+
+let dragons = "Team Dragons"
+let sharks = "Team Sharks"
+let raptors = "Team Raptors"
+
+for player in teamDragons {
+    letters.append([player["Name"]! : "Dear \(player["Guardian"]!), \(player["Name"]!) is allowed to play in \(dragons) this season. The first training begins on \(dragonsPractice). We are looking forward to a succesful and exciting season with \(player["Name"]!)"])
+}
+
+for player in teamSharks {
+    letters.append([player["Name"]! : "Dear \(player["Guardian"]!), \(player["Name"]!) is allowed to play in \(sharks) this season. The first training begins on \(sharksPractice). We are looking forward to a succesful and exciting season with \(player["Name"]!)"])
+}
+
+for player in teamRaptors {
+    letters.append([player["Name"]! : "Dear \(player["Guardian"]!), \(player["Name"]!) is allowed to play in \(raptors) this season. The first training begins on \(raptorsPractice). We are looking forward to a succesful and exciting season with \(player["Name"]!)"])
+}
+
+print(letters)
