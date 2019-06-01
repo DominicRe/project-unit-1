@@ -22,7 +22,7 @@ let player18: [String: String] = ["Name": "Herschel Krustofski", "Height": "45",
 
 // Array with all Players inside it
 
-let players: [[String: String]] = [player1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11, player12, player13, player14, player15, player16, player17, player18]
+var players: [[String: String]] = [player1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11, player12, player13, player14, player15, player16, player17, player18]
 
 
 // Sorting experience and inexperience players in two Dictionarys
@@ -49,16 +49,18 @@ var teamDragons: [[String: String]] = []
 var teamSharks: [[String: String]] = []
 var teamRaptors: [[String: String]] = []
 
+let soccerTeams = [teamDragons, teamSharks, teamRaptors]
+
 
 func sortingIntoTeams() {
     
     for exp in 0..<isExperienced.count {
         
-        if exp % 3 == 0 {
+        if exp % soccerTeams.count == 0 {
             teamDragons.append(players[exp])
-        } else if exp % 3 == 1 {
+        } else if exp % soccerTeams.count == 1 {
             teamSharks.append(players[exp])
-        } else if exp % 3 == 2 {
+        } else if exp % soccerTeams.count == 2 {
             teamRaptors.append(players[exp])
         }
     }
@@ -71,11 +73,11 @@ func sortingIntoTeams() {
     
     for inExp in 0..<isNotExperienced.count {
         
-        if inExp % 3 == 0 {
+        if inExp % soccerTeams.count == 0 {
             teamDragons.append(players[inExp])
-        } else if inExp % 3 == 1 {
+        } else if inExp % soccerTeams.count == 1 {
             teamSharks.append(players[inExp])
-        } else if inExp % 3 == 2 {
+        } else if inExp % soccerTeams.count == 2 {
             teamRaptors.append(players[inExp])
         }
     }
@@ -91,26 +93,50 @@ teamRaptors.count
 
 // Sending letters to the Guardians - Team Dragons
 
-var letters: [[String: String]] = []
+var letters = [String]()
 
 let dragonsPractice = "March 17 at 1pm"
 let sharksPractice = "March 17 at 3pm"
 let raptorsPractice = "March 18 at 1pm"
 
-let dragons = "Team Dragons"
-let sharks = "Team Sharks"
-let raptors = "Team Raptors"
+// creating letters for team dragons
 
-for player in teamDragons {
-    letters.append([player["Name"]! : "Dear \(player["Guardian"]!), \(player["Name"]!) is allowed to play in \(dragons) this season. The first training begins on \(dragonsPractice). We are looking forward to a succesful and exciting season with \(player["Name"]!)"])
+for dragonPlayer in teamDragons {
+    
+    let letterForGuardians = "Dear \(dragonPlayer["Guardian"]!), \(dragonPlayer["Name"]!) is allowed to play in Team Dragons this season. The first training begins on \(dragonsPractice). We are looking forward to a succesful and exciting season with \(dragonPlayer["Name"]!)."
+    letters.append(letterForGuardians)
+    
 }
 
-for player in teamSharks {
-    letters.append([player["Name"]! : "Dear \(player["Guardian"]!), \(player["Name"]!) is allowed to play in \(sharks) this season. The first training begins on \(sharksPractice). We are looking forward to a succesful and exciting season with \(player["Name"]!)"])
+// creating letters for team sharks
+
+for sharkPlayer in teamSharks {
+    
+    let letterForGuardians = "Dear \(sharkPlayer["Guardian"]!), \(sharkPlayer["Name"]!) is allowed to play in Team Sharks this season. The first training begins on \(sharksPractice). We are looking forward to a succesful and exciting season with \(sharkPlayer["Name"]!)."
+    letters.append(letterForGuardians)
+
 }
 
-for player in teamRaptors {
-    letters.append([player["Name"]! : "Dear \(player["Guardian"]!), \(player["Name"]!) is allowed to play in \(raptors) this season. The first training begins on \(raptorsPractice). We are looking forward to a succesful and exciting season with \(player["Name"]!)"])
+// creating letters for team raptors
+
+for raptorPlayer in teamRaptors {
+    
+    let letterForGuardians = "Dear \(raptorPlayer["Guardian"]!), \(raptorPlayer["Name"]!) is allowed to play in Team Raptors this season. The first training begins on \(raptorsPractice). We are looking forward to a succesful and exciting season with \(raptorPlayer["Name"]!)."
+    letters.append(letterForGuardians)
+
 }
 
-print(letters)
+// print all letters in the console
+
+for letterForGuardians in letters {
+    print(letterForGuardians)
+}
+
+// Updates
+
+/*
+
+ 30 May -> remove hardcoded number 3
+ 30 May -> other way to print letters
+
+ */
